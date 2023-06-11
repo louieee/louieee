@@ -1,5 +1,5 @@
 # 💫 About Me:
-I am a graduate of computer science <br>I am backend developer with expert knowledge on python.<br>I am great at JavaScript.<br>I have sufficient knowledge of DevOps.<br>I am a problem solver with great critical and logical thinking skills.<br>I am a team player.<br>I am dedicated, determined and focused.<br>
+I am a graduate of computer science <br>I am a backend developer with expert knowledge on python.<br>I am great at JavaScript.<br>I have sufficient knowledge of DevOps.<br>I am a problem solver with great critical and logical thinking skills.<br>I am a team player.<br>I am dedicated, determined and focused.<br>
 
 
 ## 🌐 Socials:
