@@ -1,0 +1,148 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+  <title>Louisoft NG Bootstrap Portfolio Template - Portfolio Details</title>
+  <meta content="" name="description">
+  <meta content="" name="keywords">
+
+  <!-- Favicons -->
+  <link href="{% static 'resumee/img/favicon.png' %}" rel="icon">
+  <link href="{% static 'resumee/img/apple-touch-icon.png' %}" rel="apple-touch-icon">
+
+  <!-- Vendor CSS Files -->
+  <link href="{% static 'resumee/vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+  <link href="{% static 'resumee/vendor/bootstrap-icons/bootstrap-icons.css' %}" rel="stylesheet">
+  <link href="{% static 'resumee/vendor/glightbox/css/glightbox.min.css' %}" rel="stylesheet">
+  <link href="{% static 'resumee/vendor/swiper/swiper-bundle.min.css' %}" rel="stylesheet">
+
+  <!-- Template Main CSS File -->
+  <link href="{% static 'resumee/css/style.css' %}" rel="stylesheet">
+
+</head>
+
+<body>
+
+  <!-- ======= Header ======= -->
+  <header id="header" class="fixed-top">
+    <div class="container d-flex align-items-center justify-content-between">
+
+      <h1 class="logo"><a href={% url 'home' %}>Louisoft NG</a></h1>
+
+      <nav id="navbar" class="navbar">
+        <ul>
+          <li><a class="nav-link scrollto " href="{% url 'home' %}">Home</a></li>
+          <li><a class="nav-link scrollto" href="{% url 'home' %}#work">Portfolio</a></li>
+          <li><a target="_blank" class="nav-link scrollto " href="https://drive.google.com/file/d/1y-6Qs7XpmBnQw4-MY_fCIqgw6h8sChG4/view?usp=sharing">Resumee</a></li>
+        </ul>
+        <i class="bi bi-list mobile-nav-toggle"></i>
+      </nav><!-- .navbar -->
+
+    </div>
+  </header><!-- End Header -->
+
+  <div class="hero hero-single route bg-image" style="background-image: url(assets/img/overlay-bg.jpg)">
+    <div class="overlay-mf"></div>
+    <div class="hero-content display-table">
+      <div class="table-cell">
+        <div class="container">
+          <h2 class="hero-title mb-4">{{ name }}</h2>
+          <ol class="breadcrumb d-flex justify-content-center">
+            <li class="breadcrumb-item">
+              <a href="{% url 'home' %}#work">Portfolios</a>
+            </li>
+            <li class="breadcrumb-item active">{{ name }}</li>
+          </ol>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <main id="main">
+
+    <!-- ======= Portfolio Details Section ======= -->
+    <section id="portfolio-details" class="portfolio-details">
+      <div class="container">
+
+        <div class="row gy-4">
+
+          <div class="col-lg-8">
+            <div class="portfolio-details-slider swiper">
+              <div class="swiper-wrapper align-items-center">
+                {% for image in images %}
+                <div class="swiper-slide">
+                  <img src="{{ image }}" alt="">
+                </div>
+                  {% endfor %}
+
+              </div>
+              <div class="swiper-pagination"></div>
+            </div>
+          </div>
+
+          <div class="col-lg-4">
+            <div class="portfolio-info">
+              <h3>Project information</h3>
+              <ul>
+                <li><strong>Role</strong>: {{ category }}</li>
+                <li><strong>Client</strong>: {{ client }}</li>
+                <li><strong>Project started </strong>: {{ date_started }}</li>
+                 <li><strong>Project ended </strong>: {{ date_ended }}</li>
+                <li><strong>Project URL</strong>: <a target="_blank" href="{{ link }}">{{ link }}</a></li>
+              </ul>
+            </div>
+            <div class="portfolio-description">
+              <h4>Project Description</h4>
+              <p>
+                {{ description }}
+              </p>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section><!-- End Portfolio Details Section -->
+
+  </main><!-- End #main -->
+
+  <!-- ======= Footer ======= -->
+  <footer>
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-12">
+          <div class="copyright-box">
+            <p class="copyright">&copy; <span id="current-year"></span> <strong>Louisoft NG</strong>. All Rights Reserved</p>
+
+            <script>
+              const currentYear = new Date().getFullYear();
+              document.getElementById('current-year').textContent = currentYear;
+            </script>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer><!-- End  Footer -->
+
+  <div id="preloader"></div>
+  <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+
+  <!-- Vendor JS Files -->
+  <script src="{% static 'resumee/vendor/purecounter/purecounter_vanilla.js' %}"></script>
+  <script src="{% static 'resumee/vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+  <script src="{% static 'resumee/vendor/glightbox/js/glightbox.min.js' %}"></script>
+  <script src="{% static 'resumee/vendor/swiper/swiper-bundle.min.js' %}"></script>
+  <script src="{% static 'resumee/vendor/typed.js/typed.min.js' %}"></script>
+  <script src="{% static 'resumee/vendor/php-email-form/validate.js' %}"></script>
+
+  <!-- Template Main JS File -->
+  <script src="{% static 'resumee/js/main.js' %}"></script>
+
+</body>
+
+</html>

@@ -1,0 +1,268 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+<script src="https://kit.fontawesome.com/70945b9f34.js" crossorigin="anonymous"></script>
+      <title>Hello, world!</title>
+      <style>
+          *{
+              font-family: Work Sans, sans-serif;
+              font-weight: 400;
+              line-height: 15px;
+              letter-spacing: 0;
+          }
+          .text-blue{
+              color: #285F74;!important;
+          }
+          .text-teal{
+              color: #00A0AE;
+          }
+          .work-title{
+              font-family: Work Sans, sans-serif;
+              font-size: 11px;
+              line-height: 13px;
+              letter-spacing: 0;
+
+          }
+          .work-icon{
+                height: 10px;
+                width: 11px;
+                left: 1px;
+                top: 1px;
+                border-radius: 0;
+
+
+          }
+          .work-location{
+              font-family: Work Sans, sans-serif;
+              font-size: 11px;
+              font-weight: 300;
+              line-height: 17px;
+              letter-spacing: 0;
+
+          }
+          .work-title-bold{
+              font-family: Work Sans, sans-serif;
+              font-size: 11px;
+              font-weight: 600;
+              line-height: 17px;
+              letter-spacing: 0;
+
+
+          }
+          .work-duties{
+              font-family: Work Sans, sans-serif;
+              font-size: 11px;
+              font-weight: 400;
+              line-height: 15px;
+              letter-spacing: 0;
+
+
+          }
+          .work-time{
+              font-family: Work Sans, sans-serif;
+              font-size: 11px;
+              font-weight: 400;
+              line-height: 17px;
+              letter-spacing: 0;
+
+
+          }
+          .skill-heading{
+              font-family: Work Sans, sans-serif;
+              font-size: 16px;
+              font-weight: 500;
+              line-height: 18px;
+              letter-spacing: 0;
+
+          }
+          .skill-item{
+                font-family: Work Sans, sans-serif;
+                font-size: 11px;
+                font-weight: 400;
+                line-height: 18px;
+                letter-spacing: 0;
+
+
+          }
+          .cv-name{
+                font-family: Work Sans, sans-serif;
+                font-size: 44px;
+                font-weight: 700;
+                line-height: 44px;
+                letter-spacing: 0
+
+          }
+          .cv-title{
+                font-family: Work Sans, sans-serif;
+                font-size: 26px;
+                font-weight: 600;
+                line-height: 30px;
+                letter-spacing: 0;
+
+          }
+          .location-title{
+              font-family: Work Sans, sans-serif;
+              font-size: 11px;
+              font-weight: 500;
+              line-height: 14px;
+              letter-spacing: 0;
+          }
+          .location-item{
+                font-family: Work Sans, sans-serif;
+                font-size: 11px;
+                font-weight: 500;
+                line-height: 16px;
+                letter-spacing: 0;
+
+          }
+      </style>
+  </head>
+  <body>
+    <div class="container p-4">
+        <header>
+            <div class="row">
+                <div class="col-6">
+                    <p class="cv-name">{{ first_name | title }} {{ middle_name | title }} {{ surname | title }}</p>
+                    <p class="cv-title text-teal"
+                    >{{ job_title }}</p>
+                </div>
+                <div class="col-3">
+                    <div>
+                        <p class="location-title">Email</p>
+                        {% if email %}
+                            <p class="text-teal location-item">{{ email | lower }} <span><a class="px-2" href="mailto:{{ email }}"><img src="{% static 'cv-icons/goto.png'%}"/></a></span></p>
+                        {% endif %}
+                    </div>
+                    <div>
+                        <p class="location-title">Location</p>
+                        <p class="location-item">{% if state %} {{ state | title }},  {% endif %}{% if country %}{{ country | title}}{% endif %}</p>
+                    </div>
+                </div>
+                <div class="col-3">
+                    <div class="d-flex flex-column justify-content-end">
+                        <div class="align-self-end">
+                             <div class="d-flex flex-column">
+                                <p class="location-title align-self-end">Website</p>
+                                    <p class="text-teal location-item align-self-end" >https://louisoft.ng<span><a class="px-2" href="{% url 'home' %}"><img src="{% static 'cv-icons/goto.png'%}"/></a></span></p>
+                             </div>
+                            <div class="d-flex flex-column">
+                                <p class="align-self-end location-title">Socials</p>
+                                <div class="d-flex flex-row location-item align-self-end" style="gap: 20px">
+                                    {% if linkedin_link %}
+                                        <a class="ps-2" href="{{ linkedin_link }}"><img src="{% static 'cv-icons/linkedin.png'%}"/></a>
+                                    {% endif %}
+                                    {% if github_link %}
+                                        <a class="ps-2" href="{{ github_link }}"><img src="{% static 'cv-icons/github.png'%}"/></a>
+                                    {% endif %}
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </header>
+        <hr/>
+        <section class="row p-4">
+            <div class="col-4">
+                <div>
+                    <p class="skill-heading">Skills</p>
+                    <ul class="skill-item list-unstyled">
+                        {% for skill in skills %}
+                            <li>
+                                 <p class="mb-3" style="letter-spacing: 1px">{{ skill.name }}</p>
+                            </li>
+
+                        {% empty %}
+                            <p class="mb-3" style="letter-spacing: 1px">No Skills acquired yet</p>
+                        {% endfor %}
+                    </ul>
+                </div>
+                <div class="mt-5">
+                    <p class="skill-heading">Languages Spoken</p>
+                    <ul class="skill-item">
+                        {% for lang in languages %}
+                            <p class="mb-3" style="letter-spacing: 1px">{{ lang.name }}</p>
+                        {% empty %}
+                             <p class="mb-3" style="letter-spacing: 1px">No Languages spoken yet</p>
+                        {% endfor %}
+                    </ul>
+                </div>
+
+            </div>
+            <div class="col-8">
+                <ul>
+                    <div class="mb-3">
+                        <p class="text-teal work-title"><span class="pe-4">
+                            <img class="work-icon" src="{% static '/cv-icons/suitcase.png'%}"/>
+                        </span>WORK HISTORY</p>
+                    <ul class="list-unstyled ps-2">
+                        {% for work in work_history %}
+                            <div class="border-1 border-secondary border-start ps-4">
+                                 <div class="row mb-3 ">
+                                <div class="col-3 ps-4 work-time">
+                                    <p>{{ work.start_date }} - {{ work.end_date }} ({{ work.duration }})</p>
+                                </div>
+                                <div class="col-9">
+                                    <p class="work-title">{{ work.role | upper }}</p>
+                                    <p class="fw-bold text-blue work-title-bold">{{ work.company | upper }}
+                                        <span class="work-location text-secondary">{{ work.location }}</span></p>
+                                    {% for description in work.descriptions %}
+                                        <p class="work-duties">{{ description }}</p>
+                                    {% endfor %}
+                                </div>
+                            </div>
+                            </div>
+                        {% empty %}
+                            <div class="border-1 border-secondary border-start ps-4">
+                                <p class="ps-3 work-duties">No work history yet</p>
+                            </div>
+                        {% endfor %}
+                    </ul>
+
+
+                </div>
+                    <div class="mb-3">
+                        <p class="text-teal work-title"> <span class="pe-4">
+                            <img class="work-icon" src="{% static 'cv-icons/edu.png'%}"/>
+                        </span>EDUCATION</p>
+                        <ul class="list-unstyled ps-2">
+                            {% for education in education_history %}
+                                <div class="border-1 border-secondary border-start ps-4">
+                                     <div class="row mb-3">
+                                <div class="col-3 ps-4 work-time">
+                                    <p>{{ education.start_date }} - {{ education.end_date }} ({{ education.duration }})</p>
+                                </div>
+                                <div class="col-9">
+                                    <p class="fw-bold text-blue work-title-bold">{{ education.institution | upper }} <span class="work-location text-secondary">{{ education.address }}</span></p>
+                                    <p class="text-secondary work-title">{{ education.degree }}, {{ education.field_of_study }}</p>
+                                </div>
+                            </div>
+                                </div>
+                                {% empty %}
+                            <div class="border-1 border-secondary border-start ps-4">
+                                <p class="ps-3 work-duties">No education history yet</p>
+                            </div>
+                            {% endfor %}
+                        </ul>
+
+                    </div>
+                </ul>
+            </div>
+        </section>
+
+    </div>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+
+  </body>
+</html>
