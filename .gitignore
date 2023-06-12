@@ -26,3 +26,4 @@ http-client.env.json
 TestFiles
 local.yml
 redis
+db.sqlite3
